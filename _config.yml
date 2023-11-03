@@ -5,9 +5,8 @@ header-img: img/2023.jpeg
 email: 1604738411@qq.com
 description: "运往无淹物，年逝觉已催"
 keyword: "运往无淹物，年逝觉已催"
-url: "https://https://sxb98.github.io/"          # your host, for absolute URL
+url: "https://https://xibinsun.github.io/"          # your host, for absolute URL
 baseurl: ""      # for example, '/blog' if your blog hosted on 'host/blog'
-github_repo: "https://github.com/klovien/klovien.github.io.git" # you code repository
 
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
@@ -87,7 +86,7 @@ friends: [
         title: "资源网站",
         href: "http://www.xiaolvji.com/u/xiaoshan"
     },{
-        title: "微博",
-        href: "https://weibo.com/u/6102634563"
+        title: "豆瓣",
+        href: "https://www.douban.com/doulist/137049296/?dt_dapp=1"
     }
 ]
