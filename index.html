@@ -4,19 +4,12 @@ description: "欢迎来到孙喜斌的个人网站"
 ---
 
 
-<!DOCTYPE html>  
-<html>  
-<head>  
-<style>  
-p {  
-  font-size: 15px; color: blue;
-}  
-</style>  
-</head>  
-<body>  
-<p>我是孙喜斌，政治学博士在读，目前的研究兴趣集中于政治行为与心理。</p>    
-</body>  
-</html>
+
+<p id="highlight">我是孙喜斌，政治学博士在读，目前的研究兴趣集中于政治行为与心理。</p>    
+
+#highlight {  
+  color: red;  font-size: 20px; 
+}
 
 {% for post in paginator.posts %}
 <div class="post-preview">
