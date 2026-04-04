@@ -1,0 +1,109 @@
+---
+layout: default
+description: ""
+---
+
+<!-- Hero Banner -->
+<div class="hero" style="background-image: url('{{ site.baseurl }}/img/2023.jpeg')">
+    <div class="hero-content">
+        <h1 class="hero-title">{{ site.author }}</h1>
+        <p class="hero-subtitle" id="typing-subtitle"></p>
+    </div>
+</div>
+
+<!-- Main Content: Post Cards -->
+<div class="main-content">
+    <div class="card-grid">
+        {% for post in paginator.posts %}
+        <a href="{{ post.url | prepend: site.baseurl }}" class="post-card">
+            {% if post.header-img %}
+            <div class="post-card-img-wrapper">
+                <img class="post-card-img" src="{{ site.baseurl }}/{{ post.header-img }}" alt="{{ post.title }}" loading="lazy">
+            </div>
+            {% endif %}
+            <div class="post-card-body">
+                <h2 class="post-card-title">{{ post.title }}</h2>
+                {% if post.subtitle %}
+                <p class="post-card-excerpt">{{ post.subtitle }}</p>
+                {% else %}
+                <p class="post-card-excerpt">{{ post.content | strip_html | truncate: 120 }}</p>
+                {% endif %}
+                <div class="post-card-meta">
+                    <span>{{ post.date | date: "%Y-%m-%d" }}</span>
+                    <div class="post-card-tags">
+                        {% for tag in post.tags limit:2 %}
+                        <span class="post-card-tag">#{{ tag }}</span>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+
+    <!-- Pagination -->
+    {% if paginator.total_pages > 1 %}
+    <div class="pagination">
+        {% if paginator.previous_page %}
+        <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">&laquo;</a>
+        {% endif %}
+
+        {% for page in (1..paginator.total_pages) %}
+            {% if page == paginator.page %}
+            <span class="current">{{ page }}</span>
+            {% elsif page == 1 %}
+            <a href="{{ site.baseurl }}/">{{ page }}</a>
+            {% else %}
+            <a href="{{ site.baseurl }}/page{{ page }}/">{{ page }}</a>
+            {% endif %}
+        {% endfor %}
+
+        {% if paginator.next_page %}
+        <a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">&raquo;</a>
+        {% endif %}
+    </div>
+    {% endif %}
+</div>
+
+<!-- Typing Animation -->
+<script>
+(function() {
+    var texts = [
+        '{{ site.author_subtitle }}',
+        '{{ site.author_description }}'
+    ];
+    var el = document.getElementById('typing-subtitle');
+    if (!el) return;
+
+    var textIndex = 0;
+    var charIndex = 0;
+    var isDeleting = false;
+    var speed = 80;
+
+    function type() {
+        var current = texts[textIndex];
+        if (isDeleting) {
+            el.textContent = current.substring(0, charIndex - 1);
+            charIndex--;
+            speed = 40;
+        } else {
+            el.textContent = current.substring(0, charIndex + 1);
+            charIndex++;
+            speed = 80;
+        }
+
+        if (!isDeleting && charIndex === current.length) {
+            speed = 2500;
+            isDeleting = true;
+        } else if (isDeleting && charIndex === 0) {
+            isDeleting = false;
+            textIndex = (textIndex + 1) % texts.length;
+            speed = 500;
+        }
+
+        setTimeout(type, speed);
+    }
+
+    type();
+})();
+</script>

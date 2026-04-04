@@ -1,0 +1,69 @@
+<!-- Progress Bar -->
+<div id="progress-bar"></div>
+
+<!-- Navigation -->
+<nav class="site-nav transparent" id="site-nav">
+    <div class="nav-inner">
+        <a class="nav-brand" href="{{ site.baseurl }}/">{{ site.author }}</a>
+        <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <ul class="nav-links" id="nav-links">
+            <li><a href="{{ site.baseurl }}/">首页</a></li>
+            <li><a href="{{ site.baseurl }}/publication/">边际贡献</a></li>
+            <li><a href="{{ site.baseurl }}/blog/">标签</a></li>
+            <li><a href="{{ site.baseurl }}/about/">关于</a></li>
+        </ul>
+    </div>
+</nav>
+
+<script>
+(function() {
+    var nav = document.getElementById('site-nav');
+    var toggle = document.getElementById('nav-toggle');
+    var links = document.getElementById('nav-links');
+
+    // Scroll effect
+    function onScroll() {
+        if (window.scrollY > 50) {
+            nav.classList.remove('transparent');
+            nav.classList.add('scrolled');
+        } else {
+            nav.classList.remove('scrolled');
+            nav.classList.add('transparent');
+        }
+
+        // Progress bar
+        var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+        var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        var scrolled = height > 0 ? (winScroll / height) * 100 : 0;
+        var bar = document.getElementById('progress-bar');
+        if (bar) bar.style.width = scrolled + '%';
+    }
+
+    window.addEventListener('scroll', onScroll);
+    onScroll();
+
+    // Mobile toggle
+    toggle.addEventListener('click', function() {
+        links.classList.toggle('open');
+    });
+
+    // Close mobile menu on link click
+    var navLinks = links.querySelectorAll('a');
+    for (var i = 0; i < navLinks.length; i++) {
+        navLinks[i].addEventListener('click', function() {
+            links.classList.remove('open');
+        });
+    }
+
+    // Close on outside click
+    document.addEventListener('click', function(e) {
+        if (!nav.contains(e.target)) {
+            links.classList.remove('open');
+        }
+    });
+})();
+</script>

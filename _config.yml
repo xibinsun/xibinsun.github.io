@@ -1,0 +1,41 @@
+# Site settings
+title: Xibin Sun
+SEOTitle: 孙喜斌 | 政治学研究者
+description: "政治学博士在读，研究兴趣：基层治理 · 政治心理 · 社会科学方法论"
+keyword: "孙喜斌, 政治学, 基层治理, 政治心理, 社会科学方法论"
+email: 1604738411@qq.com
+url: "https://xibinsun.github.io/"
+baseurl: ""
+
+# Author
+author: 孙喜斌
+author_subtitle: "政治学博士在读"
+author_description: "研究兴趣：基层治理 · 政治心理 · 社会科学方法论"
+sidebar-avatar: "/img/xiaoxiongmao.JPG"
+
+# SNS settings
+RSS: false
+weibo_username: "u/6102634563"
+
+# Build settings
+permalink: pretty
+paginate: 12
+exclude: ["less", "node_modules", "Gruntfile.js", "package.json", "README.md"]
+anchorjs: true
+
+# Plugins (GitHub Pages)
+plugins: [jekyll-paginate]
+
+# Markdown settings
+markdown: kramdown
+highlighter: rouge
+kramdown:
+  input: GFM
+
+# Featured Tags
+featured-tags: true
+featured-condition-size: 0
+
+# Progressive Web Apps
+chrome-tab-theme-color: "#2c3e50"
+service-worker: true

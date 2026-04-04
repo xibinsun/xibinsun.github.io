@@ -1,0 +1,18 @@
+---
+layout: default
+---
+
+<!-- Page Hero -->
+<div class="hero hero-page" style="background-image: url('{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}img/2023.jpeg{% endif %}')">
+    <div class="hero-content">
+        {% unless page.hide-header-text %}
+        <h1 class="hero-title">{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</h1>
+        {% if page.description %}
+        <p class="hero-subtitle">{{ page.description }}</p>
+        {% endif %}
+        {% endunless %}
+    </div>
+</div>
+
+<!-- Main Content -->
+{{ content }}
