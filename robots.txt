@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://xibinsun.github.io/sitemap.xml

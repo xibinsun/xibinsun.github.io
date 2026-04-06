@@ -19,11 +19,11 @@ const HOSTNAME_WHITELIST = [
 // The Util Function to hack URLs of intercepted requests
 const getFixedUrl = (req) => {
   var now = Date.now();
-  url = new URL(req.url)
+  var url = new URL(req.url)
 
   // 1. fixed http URL
-  // Just keep syncing with location.protocol 
-  // fetch(httpURL) belongs to active mixed content. 
+  // Just keep syncing with location.protocol
+  // fetch(httpURL) belongs to active mixed content.
   // And fetch(httpRequest) is not supported yet.
   url.protocol = self.location.protocol
 
@@ -63,7 +63,7 @@ const shouldRedirect = (req) => (isNavigationReq(req) && new URL(req.url).pathna
 // `${url}/` would mis-add "/" in the end of query, so we use URL object.
 // P.P.S. Always trust url.pathname instead of the whole url string.
 const getRedirectUrl = (req) => {
-  url = new URL(req.url)
+  var url = new URL(req.url)
   url.pathname += "/"
   return url.href
 }
@@ -81,7 +81,7 @@ self.addEventListener('install', e => {
     caches.open(PRECACHE).then(cache => {
       return cache.add('offline.html')
       .then(self.skipWaiting())
-      .catch(err => console.log(err))
+      .catch(function() {})
     })
   )
 });
@@ -94,7 +94,7 @@ self.addEventListener('install', e => {
  *  waitUntil(): activating ====> activated
  */
 self.addEventListener('activate',  event => {
-  console.log('service worker activated.')
+  // service worker activated
   event.waitUntil(self.clients.claim());
 });
 
@@ -106,10 +106,6 @@ self.addEventListener('activate',  event => {
  *  void respondWith(Promise<Response> r);
  */
 self.addEventListener('fetch', event => {
-  // logs for debugging
-  console.log(`fetch ${event.request.url}`)
-  //console.log(` - type: ${event.request.type}; destination: ${event.request.destination}`)
-  //console.log(` - mode: ${event.request.mode}, accept: ${event.request.headers.get('accept')}`)
 
   // Skip some of cross-origin requests, like those for Google Analytics.
   if (HOSTNAME_WHITELIST.indexOf(new URL(event.request.url).hostname) > -1) {

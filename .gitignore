@@ -1,0 +1,26 @@
+# macOS
+.DS_Store
+._*
+
+# Node
+node_modules/
+npm-debug.log
+
+# Jekyll
+_site/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Environment
+.env
+.env.*
+
+# Grunt
+.grunt/
