@@ -32,6 +32,22 @@
     <i class="fa fa-chevron-up"></i>
 </button>
 
+<!-- Search Overlay -->
+<div class="search-overlay" id="search-overlay">
+    <div class="search-overlay-inner">
+        <button class="search-close" id="search-close" aria-label="关闭搜索">
+            <i class="fa fa-times"></i>
+        </button>
+        <div class="search-header">
+            <div class="search-input-wrapper">
+                <i class="fa fa-search"></i>
+                <input type="text" id="search-input" placeholder="搜索文章标题、标签或内容..." autocomplete="off">
+            </div>
+        </div>
+        <div class="search-results" id="search-results"></div>
+    </div>
+</div>
+
 <!-- jQuery -->
 <script src="{{ site.baseurl }}/js/jquery.min.js"></script>
 
@@ -48,6 +64,131 @@
     });
     btn.addEventListener('click', function() {
         window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+})();
+</script>
+
+<!-- Theme Toggle -->
+<script>
+(function() {
+    var toggle = document.getElementById('theme-toggle');
+    var icon = document.getElementById('theme-icon');
+    var html = document.documentElement;
+
+    function setTheme(theme) {
+        html.setAttribute('data-theme', theme);
+        localStorage.setItem('theme', theme);
+        if (theme === 'dark') {
+            icon.className = 'fa fa-sun-o';
+        } else {
+            icon.className = 'fa fa-moon-o';
+        }
+    }
+
+    // Init: check saved preference or system preference
+    var saved = localStorage.getItem('theme');
+    if (saved) {
+        setTheme(saved);
+    } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        setTheme('dark');
+    }
+
+    toggle.addEventListener('click', function() {
+        var current = html.getAttribute('data-theme');
+        setTheme(current === 'dark' ? 'light' : 'dark');
+    });
+})();
+</script>
+
+<!-- Search -->
+<script>
+(function() {
+    var overlay = document.getElementById('search-overlay');
+    var input = document.getElementById('search-input');
+    var results = document.getElementById('search-results');
+    var searchBtn = document.getElementById('search-btn');
+    var closeBtn = document.getElementById('search-close');
+    var searchData = null;
+
+    function openSearch() {
+        overlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        input.value = '';
+        results.innerHTML = '<p class="search-tip">输入关键词开始搜索</p>';
+        setTimeout(function() { input.focus(); }, 100);
+        if (!searchData) loadSearchData();
+    }
+
+    function closeSearch() {
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    function loadSearchData() {
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', '{{ site.baseurl }}/search.json');
+        xhr.onload = function() {
+            if (xhr.status === 200) {
+                searchData = JSON.parse(xhr.responseText);
+            }
+        };
+        xhr.send();
+    }
+
+    function doSearch(query) {
+        if (!searchData || !query.trim()) {
+            results.innerHTML = '<p class="search-tip">输入关键词开始搜索</p>';
+            return;
+        }
+        var q = query.toLowerCase();
+        var matched = searchData.filter(function(item) {
+            return item.title.toLowerCase().indexOf(q) !== -1 ||
+                   item.tags.toLowerCase().indexOf(q) !== -1 ||
+                   item.content.toLowerCase().indexOf(q) !== -1;
+        });
+
+        if (matched.length === 0) {
+            results.innerHTML = '<p class="search-tip">未找到相关结果</p>';
+            return;
+        }
+
+        var html = '';
+        matched.forEach(function(item) {
+            var excerpt = '';
+            var idx = item.content.toLowerCase().indexOf(q);
+            if (idx !== -1) {
+                var start = Math.max(0, idx - 40);
+                var end = Math.min(item.content.length, idx + q.length + 60);
+                excerpt = (start > 0 ? '...' : '') +
+                    item.content.substring(start, idx) +
+                    '<mark>' + item.content.substring(idx, idx + q.length) + '</mark>' +
+                    item.content.substring(idx + q.length, end) +
+                    (end < item.content.length ? '...' : '');
+            }
+            html += '<a class="search-result-item" href="' + item.url + '">' +
+                '<span class="search-result-title">' + item.title + '</span>' +
+                '<span class="search-result-date">' + item.date + '</span>' +
+                (excerpt ? '<span class="search-result-excerpt">' + excerpt + '</span>' : '') +
+                '</a>';
+        });
+        results.innerHTML = html;
+    }
+
+    searchBtn.addEventListener('click', openSearch);
+    closeBtn.addEventListener('click', closeSearch);
+    overlay.addEventListener('click', function(e) {
+        if (e.target === overlay) closeSearch();
+    });
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') closeSearch();
+        // Ctrl/Cmd + K to open search
+        if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+            e.preventDefault();
+            openSearch();
+        }
+    });
+    input.addEventListener('input', function() {
+        doSearch(this.value);
     });
 })();
 </script>
