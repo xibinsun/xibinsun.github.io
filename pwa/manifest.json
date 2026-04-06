@@ -1,7 +1,7 @@
 {
-  "name": "BY Blog",
-  "short_name": "BY Blog",
-  "description": "A personal blog by engineer",
+  "name": "Xibin Sun",
+  "short_name": "Xibin Sun",
+  "description": "孙喜斌的个人学术网站 | Personal academic website of Xibin Sun",
   "icons": [{
     "src": "icons/pwa_icon_128.png",
     "sizes": "128x128",
