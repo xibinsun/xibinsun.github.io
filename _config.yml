@@ -17,6 +17,12 @@ sidebar-avatar: "/img/xiaoxiongmao.JPG"
 RSS: false
 weibo_username: "u/6102634563"
 
+# Collections
+collections:
+  resources:
+    output: true
+    permalink: /resources/:title/
+
 # Build settings
 permalink: pretty
 paginate: 12
