@@ -14,9 +14,7 @@ description: ""
 <!-- Main Content: Post Cards -->
 <div class="main-content">
     <div class="card-grid">
-        {% assign all_items = paginator.posts | concat: site.resources %}
-        {% assign sorted_items = all_items | sort: "date" | reverse %}
-        {% for post in sorted_items %}
+        {% for post in paginator.posts %}
         <a href="{{ post.url | prepend: site.baseurl }}" class="post-card">
             {% if post.header-img %}
             <div class="post-card-img-wrapper">
@@ -33,9 +31,6 @@ description: ""
                 <div class="post-card-meta">
                     <span>{{ post.date | date: "%Y-%m-%d" }}</span>
                     <div class="post-card-tags">
-                        {% if post.collection == "resources" %}
-                        <span class="post-card-tag">#资源</span>
-                        {% endif %}
                         {% for tag in post.tags limit:2 %}
                         <span class="post-card-tag">#{{ tag }}</span>
                         {% endfor %}

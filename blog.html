@@ -7,22 +7,40 @@ description: "按标签浏览所有博客文章"
 
 <div class="page-content">
 
+    {% assign blog_posts = site.posts | where_exp: "post", "post.category != 'resource'" %}
+
     <!-- Tag Cloud -->
     <div class="tags-cloud">
-        {% for tag in site.tags %}
-        <a href="#{{ tag[0] }}">{{ tag[0] }} <span style="font-size:0.8em; opacity:0.6;">({{ tag[1].size }})</span></a>
+        {% assign blog_tags = "" | split: "" %}
+        {% for post in blog_posts %}
+            {% for tag in post.tags %}
+                {% unless blog_tags contains tag %}
+                    {% assign blog_tags = blog_tags | push: tag %}
+                {% endunless %}
+            {% endfor %}
+        {% endfor %}
+        {% for tag in blog_tags %}
+        {% assign count = 0 %}
+        {% for post in blog_posts %}
+            {% if post.tags contains tag %}
+                {% assign count = count | plus: 1 %}
+            {% endif %}
+        {% endfor %}
+        <a href="#{{ tag }}">{{ tag }} <span style="font-size:0.8em; opacity:0.6;">({{ count }})</span></a>
         {% endfor %}
     </div>
 
     <!-- Tag Sections -->
-    {% for tag in site.tags %}
+    {% for tag in blog_tags %}
     <div class="tag-section">
-        <div class="tag-section-title" id="{{ tag[0] }}">{{ tag[0] }}</div>
-        {% for post in tag[1] %}
+        <div class="tag-section-title" id="{{ tag }}">{{ tag }}</div>
+        {% for post in blog_posts %}
+        {% if post.tags contains tag %}
         <div class="tag-post-item">
             <span class="tag-post-date">{{ post.date | date: "%Y-%m-%d" }}</span>
             <a class="tag-post-title" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
         </div>
+        {% endif %}
         {% endfor %}
     </div>
     {% endfor %}
