@@ -195,6 +195,7 @@ img {
   display: flex;
   list-style: none;
   gap: 8px;
+  margin-left: auto;
 }
 
 .nav-links a {
