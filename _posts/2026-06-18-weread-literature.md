@@ -5,11 +5,10 @@ subtitle:   一种扩展视野的野路子用法
 date:       2026-06-18
 author:     孙喜斌
 header-img: img/2023.jpeg
-catalog:    true
+catalog:    resource
 tags:
     - 学术
 ---
-
 微信读书因其便捷、高效（还有免费）受到了很多师友的喜爱。这里介绍我对微信读书的一种野路子用法：扩展视野以及补充文献。
 
 ## 问题：容易漏掉跨领域文献
