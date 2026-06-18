@@ -4,11 +4,10 @@ title:      如何订阅中文期刊
 subtitle:   用 RSS 追踪最新学术动态
 date:       2026-06-18
 author:     孙喜斌
-header-img: img/2019.jpeg
+header-img: img/2023.jpeg
 catalog:    true
 tags:
     - 学术
-    - 工具
 ---
 
 今天聊一聊如何订阅中文期刊。操作在最后一段，赶时间的朋友可以跳过前面的。
