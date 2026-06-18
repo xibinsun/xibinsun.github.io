@@ -4,7 +4,7 @@ title:      如何用微信读书补充文献？
 subtitle:   一种扩展视野的野路子用法
 date:       2026-06-18
 author:     孙喜斌
-header-img: img/2023.jpeg
+header-img: img/2019.jpeg
 catalog:    resource
 tags:
     - 学术
