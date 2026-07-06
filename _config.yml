@@ -21,6 +21,14 @@ weibo_username: "u/6102634563"
 permalink: pretty
 paginate: 12
 exclude: ["less", "node_modules", "Gruntfile.js", "package.json", "README.md"]
+
+# Front matter defaults
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      extra-css: post
 anchorjs: true
 
 # Plugins (GitHub Pages)

@@ -181,6 +181,7 @@
         results.innerHTML = html;
     }
 
+    if (!searchBtn || !overlay || !input || !closeBtn) return;
     searchBtn.addEventListener('click', openSearch);
     closeBtn.addEventListener('click', closeSearch);
     overlay.addEventListener('click', function(e) {
