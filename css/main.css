@@ -793,55 +793,57 @@ img {
 
 .pub-btn {
   font-size: 0.82rem;
-  padding: 3px 12px;
+  padding: 3px 14px;
   border-radius: 12px;
-  background: rgba(41, 170, 221, 0.08);
+  background: transparent;
   color: var(--accent);
   font-weight: 500;
-  border: none;
+  border: 1px solid rgba(41, 170, 221, 0.35);
   cursor: pointer;
   transition: var(--transition);
   font-family: var(--font-main);
+  line-height: 1.8;
 }
 
 .pub-btn:hover,
 .pub-btn.active {
   background: var(--accent);
   color: #fff;
+  border-color: var(--accent);
 }
 
 [data-theme="dark"] .pub-btn {
-  background: rgba(79, 209, 197, 0.12);
+  border-color: rgba(79, 209, 197, 0.35);
 }
 
 .pub-cite-box {
-  margin-top: 10px;
-  padding: 12px 16px;
-  background: var(--bg);
+  margin-top: 14px;
   border-radius: var(--radius);
-  border-left: 3px solid var(--accent);
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
+  border: 1px solid var(--border);
+  overflow: hidden;
 }
 
-.pub-cite-text {
-  flex: 1;
-  font-size: 0.85rem;
-  color: var(--text-light);
-  line-height: 1.7;
-  font-family: var(--font-mono);
-  word-break: break-all;
+.pub-cite-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 7px 14px;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: var(--text-muted);
 }
 
 .pub-copy-btn {
-  flex-shrink: 0;
-  font-size: 0.78rem;
-  padding: 3px 10px;
-  border-radius: 10px;
-  background: rgba(41, 170, 221, 0.1);
-  color: var(--accent);
-  border: none;
+  font-size: 0.75rem;
+  padding: 2px 10px;
+  border-radius: 8px;
+  background: var(--bg-white);
+  color: var(--text-muted);
+  border: 1px solid var(--border);
   cursor: pointer;
   transition: var(--transition);
   font-family: var(--font-main);
@@ -849,18 +851,44 @@ img {
 }
 
 .pub-copy-btn:hover {
-  background: var(--accent);
-  color: #fff;
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.pub-cite-body {
+  padding: 12px 16px;
+}
+
+.pub-cite-text {
+  font-size: 0.85rem;
+  color: var(--text);
+  line-height: 1.8;
+  word-break: break-all;
 }
 
 .pub-abstract-box {
-  margin-top: 10px;
-  padding: 14px 16px;
-  background: var(--bg);
+  margin-top: 14px;
   border-radius: var(--radius);
+  border: 1px solid var(--border);
+  overflow: hidden;
+}
+
+.pub-abstract-header {
+  padding: 7px 14px;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: var(--text-muted);
+}
+
+.pub-abstract-body {
+  padding: 14px 16px;
   font-size: 0.88rem;
   color: var(--text-light);
-  line-height: 1.9;
+  line-height: 2;
   text-align: justify;
 }
 
