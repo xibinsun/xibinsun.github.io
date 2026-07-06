@@ -6,7 +6,7 @@ description: ""
 <!-- Hero Banner -->
 <div class="hero" style="background-image: url('{{ site.baseurl }}/img/2023.jpeg')">
     <div class="hero-content">
-        <h1 class="hero-title">{{ site.author }}</h1>
+        <h1 class="hero-title" id="hero-name">{{ site.author }}</h1>
         <p class="hero-subtitle" id="typing-subtitle"></p>
     </div>
 </div>
@@ -68,17 +68,24 @@ description: ""
 <!-- Typing Animation -->
 <script>
 (function() {
-    var texts = [
-        '{{ site.author_subtitle }}',
-        '{{ site.author_description }}'
-    ];
+    var textsByLang = {
+        cn: ['{{ site.author_subtitle }}', '{{ site.author_description }}'],
+        en: ['Ph.D. Candidate in Political Science', 'Grassroots Governance · Political Psychology · Social Science Methodology']
+    };
+
+    var lang = localStorage.getItem('lang') || 'cn';
     var el = document.getElementById('typing-subtitle');
+    var heroName = document.getElementById('hero-name');
+
+    if (heroName && lang === 'en') heroName.textContent = 'Xibin Sun';
     if (!el) return;
 
+    var texts = textsByLang[lang];
     var textIndex = 0;
     var charIndex = 0;
     var isDeleting = false;
     var speed = 80;
+    var timer;
 
     function type() {
         var current = texts[textIndex];
@@ -101,9 +108,19 @@ description: ""
             speed = 500;
         }
 
-        setTimeout(type, speed);
+        timer = setTimeout(type, speed);
     }
 
     type();
+
+    document.addEventListener('langChange', function(e) {
+        lang = e.detail.lang;
+        texts = textsByLang[lang];
+        if (heroName) heroName.textContent = lang === 'en' ? 'Xibin Sun' : '{{ site.author }}';
+        clearTimeout(timer);
+        textIndex = 0; charIndex = 0; isDeleting = false; speed = 80;
+        el.textContent = '';
+        type();
+    });
 })();
 </script>

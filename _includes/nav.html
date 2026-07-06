@@ -4,18 +4,19 @@
 <!-- Navigation -->
 <nav class="site-nav transparent" id="site-nav">
     <div class="nav-inner">
-        <a class="nav-brand" href="{{ site.baseurl }}/">{{ site.author }}</a>
+        <a class="nav-brand" id="nav-brand" href="{{ site.baseurl }}/">{{ site.author }}</a>
         <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
             <span></span>
             <span></span>
             <span></span>
         </button>
         <ul class="nav-links" id="nav-links">
-            <li><a href="{{ site.baseurl }}/">首页</a></li>
-            <li><a href="{{ site.baseurl }}/about/">简历</a></li>
-            <li><a href="{{ site.baseurl }}/publication/">研究</a></li>
+            <li><a href="{{ site.baseurl }}/" id="nav-home">首页</a></li>
+            <li><a href="{{ site.baseurl }}/about/" id="nav-about">简历</a></li>
+            <li><a href="{{ site.baseurl }}/publication/" id="nav-research">研究</a></li>
         </ul>
         <div class="nav-actions">
+            <button class="nav-action-btn" id="lang-toggle" aria-label="Switch language" style="font-size: 0.7rem; font-weight: 700; letter-spacing: 0.05em;">EN</button>
             <button class="nav-action-btn" id="search-btn" aria-label="搜索">
                 <i class="fa fa-search"></i>
             </button>
@@ -70,6 +71,59 @@
     document.addEventListener('click', function(e) {
         if (!nav.contains(e.target)) {
             links.classList.remove('open');
+        }
+    });
+
+    // Language switching
+    var path = window.location.pathname;
+
+    var pagePairs = {
+        '/about/':          '/about-en/',
+        '/about-en/':       '/about/',
+        '/publication/':    '/publication-en/',
+        '/publication-en/': '/publication/'
+    };
+
+    var labels = {
+        cn: { home: '首页', about: '简历', research: '研究', brand: '孙喜斌' },
+        en: { home: 'Home', about: 'CV',   research: 'Research', brand: 'Xibin Sun' }
+    };
+
+    // Derive current language from URL; fall back to stored preference
+    function detectLang() {
+        if (path.indexOf('/about-en') !== -1 || path.indexOf('/publication-en') !== -1) return 'en';
+        return localStorage.getItem('lang') || 'cn';
+    }
+
+    function applyLang(lang) {
+        var l = labels[lang];
+        var homeEl     = document.getElementById('nav-home');
+        var aboutEl    = document.getElementById('nav-about');
+        var researchEl = document.getElementById('nav-research');
+        var brandEl    = document.getElementById('nav-brand');
+        var toggleEl   = document.getElementById('lang-toggle');
+
+        if (homeEl)     homeEl.textContent     = l.home;
+        if (brandEl)    brandEl.textContent    = l.brand;
+        if (aboutEl)  { aboutEl.textContent    = l.about;    aboutEl.href    = lang === 'en' ? '/about-en/'       : '/about/'; }
+        if (researchEl){ researchEl.textContent = l.research; researchEl.href = lang === 'en' ? '/publication-en/' : '/publication/'; }
+        if (toggleEl)   toggleEl.textContent   = lang === 'en' ? '中' : 'EN';
+    }
+
+    var currentLang = detectLang();
+    localStorage.setItem('lang', currentLang);
+    applyLang(currentLang);
+
+    document.getElementById('lang-toggle').addEventListener('click', function() {
+        var lang    = localStorage.getItem('lang') || 'cn';
+        var newLang = lang === 'cn' ? 'en' : 'cn';
+        localStorage.setItem('lang', newLang);
+
+        if (pagePairs[path]) {
+            window.location.href = pagePairs[path];
+        } else {
+            applyLang(newLang);
+            document.dispatchEvent(new CustomEvent('langChange', { detail: { lang: newLang } }));
         }
     });
 })();
