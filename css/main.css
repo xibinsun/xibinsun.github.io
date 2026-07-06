@@ -51,6 +51,10 @@
     background: rgba(26, 32, 44, 0.98);
   }
 
+  [data-theme="dark"] .nav-links.open {
+    visibility: visible;
+  }
+
   [data-theme="dark"] .nav-links a {
     color: var(--text) !important;
   }
@@ -250,11 +254,13 @@ img {
     gap: 4px;
     box-shadow: var(--shadow);
     transform: translateY(-120%);
-    transition: transform 0.3s ease;
+    visibility: hidden;
+    transition: transform 0.3s ease, visibility 0.3s ease;
   }
 
   .nav-links.open {
     transform: translateY(0);
+    visibility: visible;
   }
 
   .nav-links a {
