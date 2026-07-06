@@ -1,0 +1,79 @@
+/* ============================================
+   Tags Page
+   ============================================ */
+.tags-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 40px;
+  justify-content: center;
+}
+
+.tags-cloud a {
+  display: inline-block;
+  padding: 6px 18px;
+  border-radius: 20px;
+  background: var(--bg-white);
+  color: var(--text);
+  font-size: 0.9rem;
+  font-weight: 500;
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+  border: none;
+}
+
+.tags-cloud a:hover {
+  background: var(--accent);
+  color: #fff;
+}
+
+.tag-section {
+  margin-bottom: 32px;
+}
+
+.tag-section-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--primary);
+  padding: 8px 0;
+  margin-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.tag-section-title::before {
+  content: '#';
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.tag-post-item {
+  padding: 12px 0;
+  border-bottom: 1px dashed var(--border);
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+}
+
+.tag-post-item:last-child {
+  border-bottom: none;
+}
+
+.tag-post-date {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+  min-width: 100px;
+}
+
+.tag-post-title {
+  font-size: 1rem;
+  color: var(--text);
+  font-weight: 500;
+}
+
+.tag-post-title:hover {
+  color: var(--primary-light);
+}

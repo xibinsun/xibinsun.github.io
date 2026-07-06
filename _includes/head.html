@@ -33,12 +33,15 @@
 
     <!-- Main CSS -->
     <link rel="stylesheet" href="{{ site.baseurl }}/css/main.css">
+    {% if page.extra-css %}
+    <link rel="stylesheet" href="{{ site.baseurl }}/css/{{ page.extra-css }}.css">
+    {% endif %}
 
     <!-- Pygments/Rouge Syntax CSS -->
     <link rel="stylesheet" href="{{ site.baseurl }}/css/syntax.css">
 
     <!-- Font Awesome -->
-    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet" type="text/css">
 
     <!-- Web App Manifest -->
     <link rel="manifest" href="{{ site.baseurl }}/pwa/manifest.json">
