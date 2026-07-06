@@ -14,7 +14,7 @@ description: "学术论文与研究成果"
         <div class="pub-item">
             <div class="pub-title">公共危机次生型网络舆情危机产生的内在逻辑——基于40个案例的模糊集定性比较分析</div>
             <div class="pub-journal">《公共行政评论》</div>
-            <span class="pub-note">合作者：高虒源、张桂蓉、杨芳瑛。该文入选学术精要高下载论文，（2023.9–10）</span>
+            <span class="pub-note">合作者：高虒源、张桂蓉、杨芳瑛。该文入选学术精要高下载论文（2023.9–10）</span>
             <div class="pub-links mt-1">
                 <a href="https://kns.cnki.net/kcms/detail/detail.aspx?dbcode=CJFD&dbname=CJFDLAST2019&filename=GGXZ201904009&uniplatform=NZKPT" target="_blank">链接</a>
                 <a href="{{ site.baseurl }}/files/公共危机次生型网络舆情危机产生的内在逻辑.pdf" target="_blank">下载</a>
@@ -74,8 +74,21 @@ description: "学术论文与研究成果"
 function togglePubBox(id, btn) {
     var box = document.getElementById(id);
     var isOpen = box.style.display !== 'none';
-    box.style.display = isOpen ? 'none' : 'block';
-    btn.classList.toggle('active', !isOpen);
+
+    // 关闭同一 pub-item 内的所有展开框和按钮高亮
+    var item = btn.closest('.pub-item');
+    item.querySelectorAll('.pub-cite-box, .pub-abstract-box').forEach(function(el) {
+        el.style.display = 'none';
+    });
+    item.querySelectorAll('.pub-btn').forEach(function(el) {
+        el.classList.remove('active');
+    });
+
+    // 若原本是关闭的，则打开；若原本是打开的，保持关闭
+    if (!isOpen) {
+        box.style.display = 'block';
+        btn.classList.add('active');
+    }
 }
 
 function copyCite(id, btn) {
