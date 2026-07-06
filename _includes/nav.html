@@ -17,11 +17,11 @@
         </ul>
         <div class="nav-actions">
             <button class="nav-action-btn" id="lang-toggle" aria-label="Switch language" style="font-size: 0.7rem; font-weight: 700; letter-spacing: 0.05em;">EN</button>
-            <button class="nav-action-btn" id="search-btn" aria-label="搜索">
-                <i class="fa fa-search"></i>
-            </button>
             <button class="nav-action-btn" id="theme-toggle" aria-label="切换主题">
                 <i class="fa fa-moon-o" id="theme-icon"></i>
+            </button>
+            <button class="nav-action-btn" id="search-btn" aria-label="搜索">
+                <i class="fa fa-search"></i>
             </button>
         </div>
     </div>
@@ -107,7 +107,7 @@
         if (brandEl)    brandEl.textContent    = l.brand;
         if (aboutEl)  { aboutEl.textContent    = l.about;    aboutEl.href    = lang === 'en' ? '/about-en/'       : '/about/'; }
         if (researchEl){ researchEl.textContent = l.research; researchEl.href = lang === 'en' ? '/publication-en/' : '/publication/'; }
-        if (toggleEl)   toggleEl.textContent   = lang === 'en' ? '中' : 'EN';
+        if (toggleEl)   toggleEl.textContent   = lang === 'en' ? '中文' : 'EN';
     }
 
     var currentLang = detectLang();
