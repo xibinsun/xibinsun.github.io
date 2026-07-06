@@ -791,6 +791,79 @@ img {
   margin-top: 4px;
 }
 
+.pub-btn {
+  font-size: 0.82rem;
+  padding: 3px 12px;
+  border-radius: 12px;
+  background: rgba(41, 170, 221, 0.08);
+  color: var(--accent);
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  transition: var(--transition);
+  font-family: var(--font-main);
+}
+
+.pub-btn:hover,
+.pub-btn.active {
+  background: var(--accent);
+  color: #fff;
+}
+
+[data-theme="dark"] .pub-btn {
+  background: rgba(79, 209, 197, 0.12);
+}
+
+.pub-cite-box {
+  margin-top: 10px;
+  padding: 12px 16px;
+  background: var(--bg);
+  border-radius: var(--radius);
+  border-left: 3px solid var(--accent);
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.pub-cite-text {
+  flex: 1;
+  font-size: 0.85rem;
+  color: var(--text-light);
+  line-height: 1.7;
+  font-family: var(--font-mono);
+  word-break: break-all;
+}
+
+.pub-copy-btn {
+  flex-shrink: 0;
+  font-size: 0.78rem;
+  padding: 3px 10px;
+  border-radius: 10px;
+  background: rgba(41, 170, 221, 0.1);
+  color: var(--accent);
+  border: none;
+  cursor: pointer;
+  transition: var(--transition);
+  font-family: var(--font-main);
+  white-space: nowrap;
+}
+
+.pub-copy-btn:hover {
+  background: var(--accent);
+  color: #fff;
+}
+
+.pub-abstract-box {
+  margin-top: 10px;
+  padding: 14px 16px;
+  background: var(--bg);
+  border-radius: var(--radius);
+  font-size: 0.88rem;
+  color: var(--text-light);
+  line-height: 1.9;
+  text-align: justify;
+}
+
 /* ============================================
    Tags Page
    ============================================ */
