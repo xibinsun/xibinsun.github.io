@@ -6,8 +6,8 @@
  * Register service worker.
  * ========================================================== */
 
-const PRECACHE = 'precache-v1';
-const RUNTIME = 'runtime';
+const PRECACHE = 'precache-v2';
+const RUNTIME = 'runtime-v2';
 const HOSTNAME_WHITELIST = [
   self.location.hostname,
   "huangxuan.me",
@@ -80,7 +80,7 @@ self.addEventListener('install', e => {
   e.waitUntil(
     caches.open(PRECACHE).then(cache => {
       return cache.add('offline.html')
-      .then(self.skipWaiting())
+      .then(() => self.skipWaiting())
       .catch(function() {})
     })
   )
@@ -93,9 +93,14 @@ self.addEventListener('install', e => {
  *
  *  waitUntil(): activating ====> activated
  */
-self.addEventListener('activate',  event => {
-  // service worker activated
-  event.waitUntil(self.clients.claim());
+self.addEventListener('activate', event => {
+  const currentCaches = [PRECACHE, RUNTIME];
+  event.waitUntil(
+    caches.keys()
+      .then(cacheNames => cacheNames.filter(name => !currentCaches.includes(name)))
+      .then(cachesToDelete => Promise.all(cachesToDelete.map(name => caches.delete(name))))
+      .then(() => self.clients.claim())
+  );
 });
 
 
