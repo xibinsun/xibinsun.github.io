@@ -64,8 +64,13 @@
   }
 }
 
-[data-theme="dark"] .hero::before {
-  background: linear-gradient(135deg, rgba(26, 32, 44, 0.8), rgba(44, 82, 130, 0.6));
+[data-theme="dark"] .site-intro {
+  background: linear-gradient(135deg, #1a202c 0%, #2c3e50 100%);
+}
+
+[data-theme="dark"] .page-title-header {
+  background: var(--bg-white);
+  border-bottom-color: var(--border);
 }
 
 [data-theme="dark"] img {
@@ -275,59 +280,28 @@ img {
 }
 
 /* ============================================
-   Hero Banner
+   Site Intro (homepage)
    ============================================ */
-.hero {
-  position: relative;
-  height: 70vh;
-  min-height: 400px;
-  max-height: 600px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.site-intro {
+  padding: 64px 24px 56px;
   text-align: center;
+  background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
   color: #fff;
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-  overflow: hidden;
 }
 
-.hero::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(135deg, rgba(44, 62, 80, 0.7), rgba(52, 152, 219, 0.5));
-}
-
-.hero-content {
-  position: relative;
-  z-index: 1;
-  max-width: 700px;
-  padding: 0 24px;
-}
-
-.hero-title {
-  font-size: 3.8rem;
+.site-intro-name {
+  font-size: 3rem;
   font-weight: 700;
   margin-bottom: 12px;
-  letter-spacing: -1px;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  letter-spacing: -0.5px;
 }
 
-.hero-subtitle {
-  font-size: 1.3rem;
+.site-intro-subtitle {
+  font-size: 1.2rem;
   font-weight: 300;
   opacity: 0.9;
+  min-height: 1.8em;
   line-height: 1.6;
-}
-
-.hero-subtitle .typing-cursor {
-  animation: blink 1s infinite;
-  font-weight: 100;
 }
 
 @keyframes blink {
@@ -335,39 +309,54 @@ img {
   50% { opacity: 0; }
 }
 
-/* Page Hero (smaller, for sub-pages) */
-.hero.hero-page {
-  height: 45vh;
-  min-height: 280px;
-  max-height: 400px;
+.site-intro-subtitle .typing-cursor {
+  animation: blink 1s infinite;
+  font-weight: 100;
 }
 
-.hero.hero-page .hero-title {
-  font-size: 2.8rem;
+/* ============================================
+   Page Title Header (sub-pages)
+   ============================================ */
+.page-title-header {
+  padding: 40px 24px 32px;
+  text-align: center;
+  background: var(--bg-white);
+  border-bottom: 1px solid var(--border);
+}
+
+.page-main-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 6px;
+  letter-spacing: -0.3px;
+}
+
+.page-main-subtitle {
+  font-size: 0.95rem;
+  color: var(--text-light);
+  margin: 0;
 }
 
 @media (max-width: 768px) {
-  .hero {
-    height: 55vh;
-    min-height: 320px;
-    background-attachment: scroll;
+  .site-intro {
+    padding: 48px 20px 40px;
   }
 
-  .hero-title {
-    font-size: 2.6rem;
-  }
-
-  .hero-subtitle {
-    font-size: 1.1rem;
-  }
-
-  .hero.hero-page {
-    height: 40vh;
-    min-height: 240px;
-  }
-
-  .hero.hero-page .hero-title {
+  .site-intro-name {
     font-size: 2.2rem;
+  }
+
+  .site-intro-subtitle {
+    font-size: 1.05rem;
+  }
+
+  .page-title-header {
+    padding: 28px 20px 24px;
+  }
+
+  .page-main-title {
+    font-size: 1.6rem;
   }
 }
 

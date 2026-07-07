@@ -2,16 +2,12 @@
 layout: default
 ---
 
-<!-- Page Hero -->
-<div class="hero hero-page" style="background-image: url('{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}img/2023.jpeg{% endif %}')">
-    <div class="hero-content">
-        {% unless page.hide-header-text %}
-        <h1 class="hero-title">{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</h1>
-        {% if page.description %}
-        <p class="hero-subtitle">{{ page.description }}</p>
-        {% endif %}
-        {% endunless %}
-    </div>
+<!-- Page Title -->
+<div class="page-title-header">
+    <h1 class="page-main-title">{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</h1>
+    {% if page.description %}
+    <p class="page-main-subtitle">{{ page.description }}</p>
+    {% endif %}
 </div>
 
 <!-- Main Content -->
