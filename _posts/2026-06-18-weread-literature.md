@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      如何用微信读书补充文献？
-subtitle:   
+subtitle:   简单搜索
 date:       2026-06-18
 author:     孙喜斌
 header-img: img/2019.jpeg
