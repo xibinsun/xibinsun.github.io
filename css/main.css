@@ -38,12 +38,8 @@
   --shadow-hover: 0 6px 20px rgba(0, 0, 0, 0.4);
 }
 
-[data-theme="dark"] .site-nav.scrolled {
+[data-theme="dark"] .site-nav {
   background: rgba(26, 32, 44, 0.95);
-}
-
-[data-theme="dark"] .site-nav.scrolled .nav-toggle span {
-  background: var(--text);
 }
 
 @media (max-width: 768px) {
@@ -81,9 +77,6 @@
   background: #171923;
 }
 
-[data-theme="dark"] .site-nav.scrolled .nav-action-btn {
-  color: var(--text);
-}
 
 /* Reset & Base */
 *, *::before, *::after {
@@ -145,14 +138,6 @@ img {
   right: 0;
   height: var(--nav-height);
   z-index: 1000;
-  transition: var(--transition);
-}
-
-.site-nav.transparent {
-  background: transparent;
-}
-
-.site-nav.scrolled {
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
@@ -166,29 +151,13 @@ img {
   height: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-}
-
-.nav-brand {
-  font-size: 1.2rem;
-  font-weight: 700;
-  letter-spacing: -0.5px;
-  transition: var(--transition);
-}
-
-.site-nav.transparent .nav-brand {
-  color: #fff;
-}
-
-.site-nav.scrolled .nav-brand {
-  color: var(--primary);
+  justify-content: flex-end;
 }
 
 .nav-links {
   display: flex;
   list-style: none;
   gap: 8px;
-  margin-left: auto;
 }
 
 .nav-links a {
@@ -196,23 +165,11 @@ img {
   border-radius: 20px;
   font-size: 0.9rem;
   font-weight: 500;
+  color: var(--text);
   transition: var(--transition);
 }
 
-.site-nav.transparent .nav-links a {
-  color: rgba(255, 255, 255, 0.9);
-}
-
-.site-nav.transparent .nav-links a:hover {
-  color: #fff;
-  background: rgba(255, 255, 255, 0.15);
-}
-
-.site-nav.scrolled .nav-links a {
-  color: var(--text);
-}
-
-.site-nav.scrolled .nav-links a:hover {
+.nav-links a:hover {
   color: var(--primary-light);
   background: rgba(41, 221, 221, 0.08);
 }
@@ -224,6 +181,7 @@ img {
   border: none;
   cursor: pointer;
   padding: 8px;
+  margin-right: auto;
 }
 
 .nav-toggle span {
@@ -231,15 +189,8 @@ img {
   width: 22px;
   height: 2px;
   margin: 5px 0;
-  transition: var(--transition);
-}
-
-.site-nav.transparent .nav-toggle span {
-  background: #fff;
-}
-
-.site-nav.scrolled .nav-toggle span {
   background: var(--text);
+  transition: var(--transition);
 }
 
 @media (max-width: 768px) {
@@ -283,7 +234,7 @@ img {
    Site Intro (homepage)
    ============================================ */
 .site-intro {
-  padding: 64px 24px 56px;
+  padding: calc(var(--nav-height) + 56px) 24px 56px;
   text-align: center;
   background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
   color: #fff;
@@ -318,7 +269,7 @@ img {
    Page Title Header (sub-pages)
    ============================================ */
 .page-title-header {
-  padding: 40px 24px 32px;
+  padding: calc(var(--nav-height) + 36px) 24px 32px;
   text-align: center;
   background: var(--bg-white);
   border-bottom: 1px solid var(--border);
@@ -340,7 +291,7 @@ img {
 
 @media (max-width: 768px) {
   .site-intro {
-    padding: 48px 20px 40px;
+    padding: calc(var(--nav-height) + 36px) 20px 40px;
   }
 
   .site-intro-name {
@@ -352,7 +303,7 @@ img {
   }
 
   .page-title-header {
-    padding: 28px 20px 24px;
+    padding: calc(var(--nav-height) + 24px) 20px 24px;
   }
 
   .page-main-title {
@@ -559,20 +510,11 @@ img {
   transition: var(--transition);
 }
 
-.site-nav.transparent .nav-action-btn {
-  color: rgba(255, 255, 255, 0.9);
-}
-
-.site-nav.transparent .nav-action-btn:hover {
-  background: rgba(255, 255, 255, 0.15);
-  color: #fff;
-}
-
-.site-nav.scrolled .nav-action-btn {
+.nav-action-btn {
   color: var(--text);
 }
 
-.site-nav.scrolled .nav-action-btn:hover {
+.nav-action-btn:hover {
   background: rgba(41, 221, 221, 0.08);
   color: var(--primary-light);
 }

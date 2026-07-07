@@ -2,9 +2,8 @@
 <div id="progress-bar"></div>
 
 <!-- Navigation -->
-<nav class="site-nav transparent" id="site-nav">
+<nav class="site-nav" id="site-nav">
     <div class="nav-inner">
-        <a class="nav-brand" id="nav-brand" href="{{ site.baseurl }}/">{{ site.author }}</a>
         <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
             <span></span>
             <span></span>
@@ -33,17 +32,8 @@
     var toggle = document.getElementById('nav-toggle');
     var links = document.getElementById('nav-links');
 
-    // Scroll effect
+    // Progress bar
     function onScroll() {
-        if (window.scrollY > 50) {
-            nav.classList.remove('transparent');
-            nav.classList.add('scrolled');
-        } else {
-            nav.classList.remove('scrolled');
-            nav.classList.add('transparent');
-        }
-
-        // Progress bar
         var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
         var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
         var scrolled = height > 0 ? (winScroll / height) * 100 : 0;
@@ -85,8 +75,8 @@
     };
 
     var labels = {
-        cn: { home: '首页', about: '简历', research: '研究', brand: '孙喜斌' },
-        en: { home: 'Home', about: 'CV',   research: 'Research', brand: 'Xibin Sun' }
+        cn: { home: '首页', about: '简历', research: '研究' },
+        en: { home: 'Home', about: 'CV',   research: 'Research' }
     };
 
     // Derive current language from URL; fall back to stored preference
@@ -100,11 +90,9 @@
         var homeEl     = document.getElementById('nav-home');
         var aboutEl    = document.getElementById('nav-about');
         var researchEl = document.getElementById('nav-research');
-        var brandEl    = document.getElementById('nav-brand');
         var toggleEl   = document.getElementById('lang-toggle');
 
         if (homeEl)     homeEl.textContent     = l.home;
-        if (brandEl)    brandEl.textContent    = l.brand;
         if (aboutEl)  { aboutEl.textContent    = l.about;    aboutEl.href    = lang === 'en' ? '/about-en/'       : '/about/'; }
         if (researchEl){ researchEl.textContent = l.research; researchEl.href = lang === 'en' ? '/publication-en/' : '/publication/'; }
         if (toggleEl)   toggleEl.textContent   = lang === 'en' ? '中文' : 'EN';
