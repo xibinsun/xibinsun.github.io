@@ -4,18 +4,16 @@ description: ""
 extra-css: home
 ---
 
-<div class="academic-home">
-
-  <!-- Profile Header -->
-  <section class="ap-header">
-    <div class="ap-photo">
+<!-- Hero -->
+<div class="home-hero">
+  <div class="home-hero-inner">
+    <div class="home-avatar-wrap">
       <img src="{{ site.baseurl }}/img/xiaoxiongmao.webp" alt="{{ site.author }}">
     </div>
-    <div class="ap-intro">
-      <h1 class="ap-name">{{ site.author }}</h1>
-      <p class="ap-affil">政治学博士在读 · 南京大学政治学系</p>
-
-      <div class="ap-contact">
+    <div class="home-hero-text">
+      <h1 class="home-name">{{ site.author }}</h1>
+      <p class="home-subtitle">政治学博士在读 · 南京大学政治学系</p>
+      <div class="home-links">
         <a href="javascript:void(0)" onclick="openWechatModal()">
           <i class="fa-brands fa-weixin"></i> 微信
         </a>
@@ -28,48 +26,74 @@ extra-css: home
           </svg> ResearchGate
         </a>
       </div>
-
-      <p class="ap-bio">Hi，我是 <strong>孙喜斌</strong>，先后在湖南、福建、山西、江西、上海、浙江、安徽、江苏、重庆、甘肃、河南等地田野调研，累计调研两百余天。目前正在抓紧毕业。</p>
-      <p class="ap-interests"><strong>研究兴趣：</strong>基层治理 · 政治心理 · 社会科学方法论</p>
     </div>
-  </section>
+  </div>
+</div>
 
-  <!-- Education -->
-  <section class="ap-section">
-    <h2 class="ap-section-title">教育背景</h2>
-    <table class="ap-table">
-      <tbody>
-        <tr>
-          <td><strong>南京大学</strong>，政治学系，博士研究生（在读）</td>
-          <td class="ap-date">2023.09 – 至今</td>
-        </tr>
-        <tr>
-          <td><strong>厦门大学</strong>，政治学系，硕士</td>
-          <td class="ap-date">2020.09 – 2023.06</td>
-        </tr>
-        <tr>
-          <td><strong>中南大学</strong>，行政管理系，学士</td>
-          <td class="ap-date">2016.09 – 2020.06</td>
-        </tr>
-      </tbody>
-    </table>
-  </section>
+<!-- Body -->
+<div class="home-body">
 
-  <!-- Teaching -->
-  <section class="ap-section">
-    <h2 class="ap-section-title">教学经历</h2>
-    <table class="ap-table">
-      <tbody>
-        <tr>
-          <td><strong>社会研究方法</strong>，课程助教，参与授课，南京大学 MPA 课程</td>
-          <td class="ap-date">2025</td>
-        </tr>
-        <tr>
-          <td><strong>政治学原理</strong>，课程助教，厦门大学本科生课程</td>
-          <td class="ap-date">2021</td>
-        </tr>
-      </tbody>
-    </table>
-  </section>
+  <!-- Bio -->
+  <div class="home-card home-bio">
+    <p>Hi，我是 <strong>孙喜斌</strong>，先后在湖南、福建、山西、江西、上海、浙江、安徽、江苏、重庆、甘肃、河南等地田野调研，累计调研两百余天。目前正在抓紧毕业。</p>
+    <div class="home-tags">
+      <span class="home-tag"><i class="fa-solid fa-landmark"></i> 基层治理</span>
+      <span class="home-tag"><i class="fa-solid fa-brain"></i> 政治心理</span>
+      <span class="home-tag"><i class="fa-solid fa-flask"></i> 社会科学方法论</span>
+    </div>
+  </div>
 
+  <!-- Cards grid -->
+  <div class="home-grid">
+
+    <!-- Education -->
+    <section class="home-card">
+      <h2 class="home-card-title"><i class="fa-solid fa-graduation-cap"></i> 教育背景</h2>
+      <div class="tl">
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-body">
+            <div class="tl-title"><strong>南京大学</strong><span class="tl-badge">博士在读</span></div>
+            <div class="tl-meta">政治学系 · 2023.09 – 至今</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-body">
+            <div class="tl-title"><strong>厦门大学</strong><span class="tl-badge tl-badge--done">硕士</span></div>
+            <div class="tl-meta">政治学系 · 2020.09 – 2023.06</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-body">
+            <div class="tl-title"><strong>中南大学</strong><span class="tl-badge tl-badge--done">学士</span></div>
+            <div class="tl-meta">行政管理系 · 2016.09 – 2020.06</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Teaching -->
+    <section class="home-card">
+      <h2 class="home-card-title"><i class="fa-solid fa-chalkboard-user"></i> 教学经历</h2>
+      <div class="tl">
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-body">
+            <div class="tl-title"><strong>社会研究方法</strong></div>
+            <div class="tl-meta">课程助教，参与授课 · 南京大学 MPA 课程 · 2025</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-body">
+            <div class="tl-title"><strong>政治学原理</strong></div>
+            <div class="tl-meta">课程助教 · 厦门大学本科生课程 · 2021</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
 </div>
