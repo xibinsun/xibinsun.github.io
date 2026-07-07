@@ -19,7 +19,6 @@ weibo_username: "u/6102634563"
 
 # Build settings
 permalink: pretty
-paginate: 12
 exclude: ["less", "node_modules", "Gruntfile.js", "package.json", "README.md"]
 
 # Front matter defaults
