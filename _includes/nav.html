@@ -10,8 +10,8 @@
             <span></span>
         </button>
         <ul class="nav-links" id="nav-links">
-            {% if page.url contains 'publication-en' %}
-            <li><a href="{{ site.baseurl }}/">Home</a></li>
+            {% if page.lang == 'en' %}
+            <li><a href="{{ site.baseurl }}/index-en/">Home</a></li>
             <li><a href="{{ site.baseurl }}/blog/">Blog</a></li>
             <li><a href="{{ site.baseurl }}/publication-en/">Research</a></li>
             {% else %}
@@ -21,10 +21,10 @@
             {% endif %}
         </ul>
         <div class="nav-actions">
-            {% if page.url contains 'publication-en' %}
-            <a class="nav-action-btn nav-lang-btn" href="{{ site.baseurl }}/publication/" aria-label="切换为中文">中文</a>
+            {% if page.lang == 'en' %}
+            <a class="nav-action-btn nav-lang-btn" href="{{ site.baseurl }}{{ page.lang_url }}" aria-label="切换为中文">中文</a>
             {% else %}
-            <a class="nav-action-btn nav-lang-btn" href="{{ site.baseurl }}/publication-en/" aria-label="Switch to English">EN</a>
+            <a class="nav-action-btn nav-lang-btn" href="{{ site.baseurl }}{{ page.lang_url }}" aria-label="Switch to English">EN</a>
             {% endif %}
             <button class="nav-action-btn" id="theme-toggle" aria-label="切换主题">
                 <i class="fa-solid fa-moon" id="theme-icon"></i>
