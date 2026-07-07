@@ -10,11 +10,13 @@
             <span></span>
         </button>
         <ul class="nav-links" id="nav-links">
-            <li><a href="{{ site.baseurl }}/">首页</a></li>
-            <li><a href="{{ site.baseurl }}/blog/">博客</a></li>
             {% if page.url contains 'publication-en' %}
+            <li><a href="{{ site.baseurl }}/">Home</a></li>
+            <li><a href="{{ site.baseurl }}/blog/">Blog</a></li>
             <li><a href="{{ site.baseurl }}/publication-en/">Research</a></li>
             {% else %}
+            <li><a href="{{ site.baseurl }}/">首页</a></li>
+            <li><a href="{{ site.baseurl }}/blog/">博客</a></li>
             <li><a href="{{ site.baseurl }}/publication/">研究</a></li>
             {% endif %}
         </ul>
