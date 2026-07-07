@@ -519,6 +519,17 @@ img {
   color: var(--primary-light);
 }
 
+/* Language toggle link (only on publication pages) */
+.nav-lang-btn {
+  text-decoration: none;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  width: auto;
+  padding: 0 8px;
+  border-radius: 20px;
+}
+
 @media (max-width: 768px) {
   .nav-actions {
     margin-left: auto;

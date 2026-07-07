@@ -10,12 +10,22 @@
             <span></span>
         </button>
         <ul class="nav-links" id="nav-links">
-            <li><a href="{{ site.baseurl }}/" id="nav-home">首页</a></li>
-            <li><a href="{{ site.baseurl }}/blog/" id="nav-blog">博客</a></li>
-            <li><a href="{{ site.baseurl }}/publication/" id="nav-research">研究</a></li>
+            <li><a href="{{ site.baseurl }}/">首页</a></li>
+            <li><a href="{{ site.baseurl }}/blog/">博客</a></li>
+            {% if page.url contains 'publication-en' %}
+            <li><a href="{{ site.baseurl }}/publication-en/">Research</a></li>
+            {% else %}
+            <li><a href="{{ site.baseurl }}/publication/">研究</a></li>
+            {% endif %}
         </ul>
         <div class="nav-actions">
-            <button class="nav-action-btn" id="lang-toggle" aria-label="Switch language" style="font-size: 0.7rem; font-weight: 700; letter-spacing: 0.05em;">EN</button>
+            {% if page.url contains 'publication' %}
+            {% if page.url contains 'publication-en' %}
+            <a class="nav-action-btn nav-lang-btn" href="{{ site.baseurl }}/publication/" aria-label="切换为中文">中文</a>
+            {% else %}
+            <a class="nav-action-btn nav-lang-btn" href="{{ site.baseurl }}/publication-en/" aria-label="Switch to English">EN</a>
+            {% endif %}
+            {% endif %}
             <button class="nav-action-btn" id="theme-toggle" aria-label="切换主题">
                 <i class="fa-solid fa-moon" id="theme-icon"></i>
             </button>
@@ -61,54 +71,6 @@
     document.addEventListener('click', function(e) {
         if (!nav.contains(e.target)) {
             links.classList.remove('open');
-        }
-    });
-
-    // Language switching
-    var path = window.location.pathname;
-
-    var pagePairs = {
-        '/publication/':    '/publication-en/',
-        '/publication-en/': '/publication/'
-    };
-
-    var labels = {
-        cn: { home: '首页', blog: '博客', research: '研究' },
-        en: { home: 'Home', blog: 'Blog',  research: 'Research' }
-    };
-
-    // Derive current language from URL; fall back to stored preference
-    function detectLang() {
-        if (path.indexOf('/publication-en') !== -1) return 'en';
-        return localStorage.getItem('lang') || 'cn';
-    }
-
-    function applyLang(lang) {
-        var l = labels[lang];
-        var homeEl     = document.getElementById('nav-home');
-        var blogEl     = document.getElementById('nav-blog');
-        var researchEl = document.getElementById('nav-research');
-        var toggleEl   = document.getElementById('lang-toggle');
-
-        if (homeEl)     homeEl.textContent     = l.home;
-        if (blogEl)     blogEl.textContent     = l.blog;
-        if (researchEl){ researchEl.textContent = l.research; researchEl.href = lang === 'en' ? '/publication-en/' : '/publication/'; }
-        if (toggleEl)   toggleEl.textContent   = lang === 'en' ? '中文' : 'EN';
-    }
-
-    var currentLang = detectLang();
-    applyLang(currentLang);
-
-    document.getElementById('lang-toggle').addEventListener('click', function() {
-        var lang    = localStorage.getItem('lang') || 'cn';
-        var newLang = lang === 'cn' ? 'en' : 'cn';
-        localStorage.setItem('lang', newLang);
-
-        if (pagePairs[path]) {
-            window.location.href = pagePairs[path];
-        } else {
-            applyLang(newLang);
-            document.dispatchEvent(new CustomEvent('langChange', { detail: { lang: newLang } }));
         }
     });
 })();
