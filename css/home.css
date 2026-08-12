@@ -241,6 +241,83 @@
   color: var(--text-muted);
 }
 
+/* ---- Project Table ---- */
+.proj-section {
+  margin-top: 20px;
+}
+
+.proj-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+}
+
+.proj-table th {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  padding: 0 12px 10px;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+}
+
+.proj-table th:last-child {
+  text-align: center;
+}
+
+.proj-table td {
+  padding: 11px 12px;
+  vertical-align: top;
+  border-bottom: 1px solid var(--border);
+  color: var(--text);
+  line-height: 1.55;
+}
+
+.proj-table tr:last-child td {
+  border-bottom: none;
+}
+
+.proj-table tr:hover td {
+  background: rgba(41, 170, 221, 0.04);
+}
+
+.proj-type {
+  color: var(--text-muted);
+  font-size: 0.83rem;
+  white-space: nowrap;
+}
+
+.proj-name {
+  font-size: 0.88rem;
+}
+
+.proj-no {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+}
+
+.proj-role {
+  text-align: center;
+  white-space: nowrap;
+}
+
+.proj-badge {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 2px 9px;
+  border-radius: 10px;
+  background: rgba(153, 153, 153, 0.12);
+  color: var(--text-muted);
+}
+
+.proj-badge--lead {
+  background: rgba(41, 170, 221, 0.12);
+  color: var(--accent);
+}
+
 /* ---- Responsive ---- */
 @media (max-width: 680px) {
   .home-hero {
