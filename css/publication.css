@@ -1,6 +1,10 @@
 /* ============================================
    Research Section
    ============================================ */
+.pub-section {
+  margin-bottom: 40px;
+}
+
 .pub-item {
   background: var(--bg);
   border-radius: var(--radius);
@@ -15,10 +19,6 @@
   transform: translateX(4px);
 }
 
-.pub-item:last-child {
-  margin-bottom: 0;
-}
-
 .pub-title {
   font-size: 1rem;
   font-weight: 600;
@@ -31,6 +31,7 @@
   font-size: 0.82rem;
   color: var(--text-muted);
   line-height: 1.8;
+  margin-bottom: 8px;
 }
 
 .pub-links {
