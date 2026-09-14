@@ -1,5 +1,7 @@
+@import url("publication.css");
+
 /* ============================================
-   Home Page — Hero + Cards
+   CV Page — Hero + Cards
    ============================================ */
 
 /* ---- Hero ---- */
@@ -109,6 +111,10 @@
 
 /* Bio card */
 .home-bio {
+  margin-bottom: 24px;
+}
+
+.home-research {
   margin-bottom: 24px;
 }
 

@@ -1,12 +1,12 @@
 /* ============================================
-   Publication Page
+   Research Section
    ============================================ */
 .pub-section {
   margin-bottom: 40px;
 }
 
-.pub-section h2 {
-  font-size: 1.4rem;
+.pub-section h3 {
+  font-size: 1.05rem;
   font-weight: 700;
   color: var(--primary);
   margin-bottom: 20px;
@@ -16,11 +16,10 @@
 }
 
 .pub-item {
-  background: var(--bg-white);
+  background: var(--bg);
   border-radius: var(--radius);
   padding: 20px 24px;
   margin-bottom: 12px;
-  box-shadow: var(--shadow);
   transition: var(--transition);
   border-left: 3px solid transparent;
 }
@@ -46,6 +45,7 @@
 
 .pub-links {
   display: flex;
+  flex-wrap: wrap;
   gap: 12px;
 }
 
@@ -183,4 +183,10 @@
   color: var(--text-light);
   line-height: 2;
   text-align: justify;
+}
+
+@media (max-width: 680px) {
+  .pub-item {
+    padding: 16px 14px;
+  }
 }
