@@ -129,6 +129,16 @@
 
 .home-research .pub-meta {
   color: var(--text-light);
+  white-space: nowrap;
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+.home-research .pub-journal {
+  color: var(--primary-light);
+  font-size: 0.82rem;
+  font-weight: 500;
+  white-space: nowrap;
 }
 
 .home-bio p {
