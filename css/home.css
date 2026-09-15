@@ -115,7 +115,20 @@
 }
 
 .home-research {
-  margin-bottom: 24px;
+  margin: 24px 0;
+}
+
+.home-research .pub-section,
+.home-research .pub-item:last-child {
+  margin-bottom: 0;
+}
+
+.home-research .pub-item {
+  border-left-color: var(--accent);
+}
+
+.home-research .pub-meta {
+  color: var(--text-light);
 }
 
 .home-bio p {
